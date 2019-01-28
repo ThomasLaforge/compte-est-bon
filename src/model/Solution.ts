@@ -2,17 +2,14 @@ import { Step } from "./Step";
 
 export class Solution {
 
-    public steps: Step[]
+    public step: Step
 
-    constructor(steps: Step[]){
-        this.steps = steps
+    constructor(step: Step){
+        this.step = step
     }
 
     get value(){
-        let res: number
-        res = 0
-        
-        return res
+        return this.step.result
     }
 
 }

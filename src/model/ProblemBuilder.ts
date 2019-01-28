@@ -3,8 +3,6 @@ import { shuffle } from "../utils";
 
 export class ProblemBuilder {
 
-    constructor(){}
-
     static generate(){
         /*Les règles du jeu
             Le joueur tire au hasard, sans remplacement, six plaques portant des numéros parmi un ensemble de 28 plaques ainsi constitué
@@ -25,7 +23,7 @@ export class ProblemBuilder {
         }
         possibilities = shuffle(possibilities)
 
-        let numbers: number[] = possibilities.slice(0, 6 - 1)
+        let numbers: number[] = possibilities.slice(0, 6)
         const min = 100
         const max = 999
         const expectedResult = Math.floor(Math.random() * (max - min +1)) + min;
