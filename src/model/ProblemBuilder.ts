@@ -31,5 +31,4 @@ export class ProblemBuilder {
         return new Problem(numbers, expectedResult)
     }
 
-
 }

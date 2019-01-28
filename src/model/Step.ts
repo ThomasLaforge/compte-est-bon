@@ -6,7 +6,7 @@ export class Step {
     public rightNumber: number | Step
     public operator: Operator
 
-    constructor(leftNumber: number | Step, rightNumber: number | Step, operator: Operator){
+    constructor(leftNumber: number | Step, operator: Operator, rightNumber: number | Step){
         this.leftNumber = leftNumber
         this.rightNumber = rightNumber
         this.operator = operator
