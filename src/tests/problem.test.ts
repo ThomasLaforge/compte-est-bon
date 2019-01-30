@@ -17,17 +17,24 @@ describe('problem', () => {
         //     expect(r.isResolvable()).toBe(true)
         // });
 
-        test('get all solutions with two numbers', () => {
-            const p = new Problem([1, 10], 10)
-            const r = new Resolver(p)
-            expect(r.getSolutions().map(s => s.value)).toEqual([11, 0.1, 10, -9, 11, 10, 10, 9])
-            expect(r.getSolutions().length).toBe(8)
-        })
+        // test('get all solutions with two numbers', () => {
+        //     const p = new Problem([1, 10], 10)
+        //     const r = new Resolver(p)
+        //     expect(r.getBestSolutionValue()).toBe(10)
+        //     expect(r.getSolutions().map(s => s.value)).toEqual([11, 0.1, 10, -9, 11, 10, 10, 9])
+        //     expect(r.getSolutions().length).toBe(8)
+        // })
 
         // test('get all solutions with two numbers', () => {
         //     const p = new Problem([10, 100, 25, 50, 2, 7], 965)
         //     const r = new Resolver(p)
-        //     expect(r.getSolution().value)
+        //     expect(r.getBestSolutionValue()).toBe(965)
+        // })
+
+        // test('get all solutions with two numbers', () => {
+        //     const p = new Problem([10, 100, 25, 10, 1], 1036)
+        //     const r = new Resolver(p)
+        //     expect(r.getBestSolutionValue()).toBe(1036)
         // })
     })
 })

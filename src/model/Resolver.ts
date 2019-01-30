@@ -15,7 +15,7 @@ export class Resolver {
         let solutions: Solution[] = []
         const operators = [Operator.Add, Operator.Divide, Operator.Multiply, Operator.Substract]
 
-        console.log('length', this.pb.numbers.length)
+        // console.log('length', this.pb.numbers.length)
         this.pb.numbers.forEach( (n1, i) => {
             this.pb.numbers.forEach( (n2, j) => {
                 if(i !== j){
@@ -29,10 +29,13 @@ export class Resolver {
                         // if(s.value === this.pb.expectedResult || j === this.pb.numbers.length - 1){
                             solutions.push(s)
                         }
+                        // else if(step.result < 0 || Math.floor(step.result) !== step.result ){
+                        //     solutions = []
+                        // }
                         else {
                             let numbers: (Step | number)[] = this.pb.numbers.filter( (v, index) => index !== i && index !== j)
                             numbers.push(step)
-                            console.log('numbers', numbers, this.pb.numbers)
+                            // console.log('numbers', numbers, this.pb.numbers)
                             let child = new Resolver(new Problem(numbers, this.pb.expectedResult))
                             solutions.push(...child.getSolutions())
                         }
@@ -44,11 +47,12 @@ export class Resolver {
         return solutions
     }
 
-    getSolution(){
-        let solution: Solution
+    getSolution() {
+        let bestSolutionValue = 0
         const operators = [Operator.Add, Operator.Divide, Operator.Multiply, Operator.Substract]
 
-        console.log('length', this.pb.numbers.length)
+        
+        // console.log('length', this.pb.numbers.length)
         this.pb.numbers.forEach( (n1, i) => {
             this.pb.numbers.forEach( (n2, j) => {
                 if(i !== j){
@@ -59,25 +63,35 @@ export class Resolver {
                         const s = new Solution(step)
     
                         if(s.value === this.pb.expectedResult){
-                            solution = s
+                            return s 
                         }
+                        else if(j === this.pb.numbers.length - 1 || i === this.pb.numbers.length - 1){
+                            return s
+                        }
+                        // else if(step.result < 0 || Math.floor(step.result) !== step.result ){
+                        //     solutions = []
+                        // }
                         else {
                             let numbers: (Step | number)[] = this.pb.numbers.filter( (v, index) => index !== i && index !== j)
                             numbers.push(step)
-                            console.log('numbers', numbers, this.pb.numbers)
+                            // console.log('numbers', numbers, this.pb.numbers)
                             let child = new Resolver(new Problem(numbers, this.pb.expectedResult))
-                            solution = child.getSolution()
+                            return child.getSolution()
                         }
                     }
                 }
             })
         })
 
-        return solution
+        return null
     }
 
     getBestSolutionValue(){
-        return this.getSolutions()[0].value
+        let solutions = this.getSolutions()
+        console.log('solutions before', solutions.length, solutions.map(s => s.value))
+        solutions = solutions.sort((a, b) => Math.abs(a.value - this.pb.expectedResult) - Math.abs(b.value - this.pb.expectedResult) )
+        console.log('solutions after', solutions.map(s => s.value))
+        return solutions[0].value
     }
 
     isResolvable(){
