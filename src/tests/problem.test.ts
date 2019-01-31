@@ -3,12 +3,12 @@ import { Problem } from "../model/Problem";
 import { Resolver } from "../model/Resolver";
 
 describe('problem', () => {
-    describe('problem builder', () => {
-        test('create', () => {
-            const p = ProblemBuilder.generate()
-            expect(!!p).toBe(true)
-        });
-    })
+    // describe('problem builder', () => {
+    //     test('create', () => {
+    //         const p = ProblemBuilder.generate()
+    //         expect(!!p).toBe(true)
+    //     });
+    // })
     
     describe('problem solver', () => {
         // test('full add', () => {
@@ -32,9 +32,12 @@ describe('problem', () => {
         })
 
         // test('get all solutions with two numbers', () => {
-        //     const p = new Problem([10, 100, 25, 10, 1], 1036)
+        //     // const p = new Problem([10, 100, 25, 50, 2, 7], 965)
+        //     const p = new Problem([960, 5, 25, 50, 2, 7], 965)
         //     const r = new Resolver(p)
-        //     expect(r.getBestSolutionValue()).toBe(1036)
+        //     const s = r.getSolution()
+        //     console.log('solution', s)
+        //     expect(s).toBe(true)
         // })
     })
 })

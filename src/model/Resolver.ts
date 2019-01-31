@@ -6,6 +6,7 @@ import { Operator } from "../defs";
 export class Resolver {
 
     public pb: Problem
+    public bestSolution?: Solution
 
     constructor(pb: Problem){
         this.pb = pb
@@ -45,7 +46,7 @@ export class Resolver {
     }
 
     getSolution() {
-        let bestSolutionValue = 0
+        // let bestSolutionValue = 0
         const operators = [Operator.Add, Operator.Divide, Operator.Multiply, Operator.Substract]
 
         
@@ -60,15 +61,9 @@ export class Resolver {
                         const s = new Solution(step)
     
                         if(s.value === this.pb.expectedResult){
-                            return s 
-                        }
-                        else if(j === this.pb.numbers.length - 1 || i === this.pb.numbers.length - 1){
                             return s
                         }
-                        // else if(step.result < 0 || Math.floor(step.result) !== step.result ){
-                        //     solutions = []
-                        // }
-                        else {
+                        else if(step.result > 0 && Math.floor(step.result) === step.result){
                             let numbers: (Step | number)[] = this.pb.numbers.filter( (v, index) => index !== i && index !== j)
                             numbers.push(step)
                             // console.log('numbers', numbers, this.pb.numbers)
@@ -80,10 +75,18 @@ export class Resolver {
             })
         })
 
-        return null
+        return false
     }
 
     getBestSolutionValue(){
+        return this.getBestSolution().value
+    }
+
+    getBestSolution(){
+        if(this.bestSolution){
+            return this.bestSolution
+        }
+
         const solutions = this.getSolutions()
         const expected = this.pb.expectedResult
 
@@ -97,9 +100,8 @@ export class Resolver {
             i++
         }
 
-        console.log('got solutions', solutions.length, solutions[0].value, expected)
-
-        return i === solutions.length ? best.value : solutions[i].value
+        this.bestSolution = i === solutions.length ? best : solutions[i]
+        return this.bestSolution
     }
 
     isResolvable(){
