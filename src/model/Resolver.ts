@@ -84,11 +84,22 @@ export class Resolver {
     }
 
     getBestSolutionValue(){
-        let solutions = this.getSolutions()
-        console.log('solutions before', solutions.length, solutions.map(s => s.value))
-        solutions = solutions.sort((a, b) => Math.abs(a.value - this.pb.expectedResult) - Math.abs(b.value - this.pb.expectedResult) )
-        console.log('solutions after', solutions.map(s => s.value))
-        return solutions[0].value
+        const solutions = this.getSolutions()
+        const expected = this.pb.expectedResult
+
+        let i = 0
+        let best = solutions[0]
+
+        while(i < solutions.length && solutions[i].value !== expected){
+            if(Math.abs(solutions[i].value - expected) < Math.abs(best.value - expected) ){
+                best = solutions[i]
+            }
+            i++
+        }
+
+        console.log('got solutions', solutions.length, solutions[0].value, expected)
+
+        return i === solutions.length ? best.value : solutions[i].value
     }
 
     isResolvable(){
