@@ -29,10 +29,7 @@ export class Resolver {
                         // if(s.value === this.pb.expectedResult || j === this.pb.numbers.length - 1){
                             solutions.push(s)
                         }
-                        // else if(step.result < 0 || Math.floor(step.result) !== step.result ){
-                        //     solutions = []
-                        // }
-                        else {
+                        else if(step.result > 0 && Math.floor(step.result) === step.result){
                             let numbers: (Step | number)[] = this.pb.numbers.filter( (v, index) => index !== i && index !== j)
                             numbers.push(step)
                             // console.log('numbers', numbers, this.pb.numbers)
