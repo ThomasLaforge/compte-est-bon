@@ -17,10 +17,9 @@ export class ProblemBuilder {
         */
         let possibilities: number[] = []
         for (let nb = 0; nb < 2; nb++) {
-            [1,2,3,4,5,6,7,8,9,10,25,50,75,100].forEach(num => {
-                possibilities.push(num)
-            })            
+            [1,2,3,4,5,6,7,8,9,10].forEach(num => possibilities.push(num) )            
         }
+        [25,50,75,100].forEach(num => possibilities.push(num))            
         possibilities = shuffle(possibilities)
 
         let numbers: number[] = possibilities.slice(0, 6)

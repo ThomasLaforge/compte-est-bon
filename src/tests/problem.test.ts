@@ -31,13 +31,5 @@ describe('problem', () => {
             expect(r.getBestSolutionValue()).toBe(965)
         })
 
-        // test('get all solutions with two numbers', () => {
-        //     // const p = new Problem([10, 100, 25, 50, 2, 7], 965)
-        //     const p = new Problem([960, 5, 25, 50, 2, 7], 965)
-        //     const r = new Resolver(p)
-        //     const s = r.getSolution()
-        //     console.log('solution', s)
-        //     expect(s).toBe(true)
-        // })
     })
 })

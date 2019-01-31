@@ -12,4 +12,12 @@ export class Solution {
         return this.step.result
     }
 
+    toString(){
+        return this.step.toString()
+    }
+
+    toStringArray(){
+        return this.step.toStringArray()
+    }
+
 }
