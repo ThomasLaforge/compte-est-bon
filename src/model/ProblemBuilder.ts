@@ -1,5 +1,6 @@
 import { Problem } from "./Problem";
 import { shuffle } from "../utils";
+import { MAX_SOLUTION, MIN_SOLUTION } from "../defs";
 
 export class ProblemBuilder {
 
@@ -23,9 +24,7 @@ export class ProblemBuilder {
         possibilities = shuffle(possibilities)
 
         let numbers: number[] = possibilities.slice(0, 6)
-        const min = 100
-        const max = 999
-        const expectedResult = Math.floor(Math.random() * (max - min +1)) + min;
+        const expectedResult = Math.floor(Math.random() * (MAX_SOLUTION - MIN_SOLUTION +1)) + MIN_SOLUTION;
 
         return new Problem(numbers, expectedResult)
     }

@@ -14,6 +14,7 @@ interface AppProps {
 interface AppState {
   problem: ProblemClass
   solution: Solution
+  solutions: Solution[]
   leftNumber?: number
   rightNumber?: number
   operator?: Operator
@@ -24,9 +25,13 @@ class App extends Component<AppProps, AppState> {
   constructor(props: any){
     super(props)
     const p = ProblemBuilder.generate()
+    // const p = new ProblemClass([5, 10, 10, 3, 2, 4], 417)
+    // const p = new ProblemClass([5, 10, 3], 15)
+
     this.state = {
       problem: p,
-      solution: new Resolver(p).getBestSolution()
+      solution: new Resolver(p).getBestSolution(),
+      solutions: new Resolver(p).getSolutions()
     }
   }
 
@@ -70,6 +75,15 @@ class App extends Component<AppProps, AppState> {
                 <button>=</button>
               </div>
             </div>
+        </div>
+        <div className="solutions">
+          {/* {this.state.solutions.map( (s, i) => {
+            return s.toStringArray().map( (line, i) => (
+              <div className="solution-line" key={i}>{line}</div>
+            ))
+          })} */}
+          {/* {this.state.solutions.map( (s, i) => s.value + ',' + (i % 25 === 0 ? "\n" : ''))} */}
+          {this.state.solutions.length}
         </div>
       </div>
     );
