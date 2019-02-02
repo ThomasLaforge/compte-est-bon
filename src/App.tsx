@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import './styles/App.scss';
 import './App.scss';
 import { ProblemBuilder } from './model/ProblemBuilder';
 import { Problem as ProblemClass } from './model/Problem'
