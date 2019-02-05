@@ -51,30 +51,32 @@ export default class Game extends Component<GameProps, GameState> {
     render() {
         return (
             <div className='game'>
-                <div className="info-zone">
-                    <div className="objectif">
-                        {this.state.problem.expectedResult}
+                <div className="game-content">
+                    <div className="info-zone">
+                        <div className="objectif">
+                            {this.state.problem.expectedResult}
+                        </div>
+                        <div className="go-to-home-btn">Menu</div>
+                        <div className="new-game-btn">Nouvelle Partie</div>
+                        <div className="restart-btn">Recommencer</div>
+                        <div className="timer">90</div>
                     </div>
-                    <div className="go-to-home-btn">Menu</div>
-                    <div className="new-game-btn">Nouvelle Partie</div>
-                    <div className="restart-btn">Recommencer</div>
-                    <div className="timer">90</div>
-                </div>
-                <div className="board">
-                    <div className="left-part">
-                        <div className="numbers">
-                            {this.renderNumbers()}
+                    <div className="board">
+                        <div className="left-part">
+                            <div className="numbers">
+                                {this.renderNumbers()}
+                            </div>
+                            <div className="steps">
+                                {this.renderSteps()}
+                            </div>
+                            <div className="actions">
+                                <div className="delete-btn">Effacer</div>
+                                <div className="validate-btn">Valider</div>
+                            </div>
                         </div>
-                        <div className="steps">
-                            {this.renderSteps()}
+                        <div className="rigth-part">
+                            {this.renderOperators()}
                         </div>
-                        <div className="actions">
-                            <div className="delete-btn">Effacer</div>
-                            <div className="validate-btn">Valider</div>
-                        </div>
-                    </div>
-                    <div className="rigth-part">
-                        {this.renderOperators()}
                     </div>
                 </div>
             </div>
